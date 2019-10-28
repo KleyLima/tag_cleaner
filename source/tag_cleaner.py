@@ -14,8 +14,6 @@ class TagCleaner:
                     for line in html:
                         pure.write(sub('<[^>]*>', '', line))
                     a = (pure.read())
-                    print(type(a))
-                    print(a)
 
             except FileNotFoundError as error:
                 print(error)
