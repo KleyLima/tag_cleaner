@@ -8,15 +8,20 @@ class TagCleaner:
         self.path = path
 
     def clean(self):
-        with open('pure_text.txt', 'w') as pure:
+        with open('pure_text.txt', 'w+') as pure:
             try:
                 with open(self.path, 'r') as html:
                     for line in html:
                         pure.write(sub('<[^>]*>', '', line))
+                    a = (pure.read())
+                    print(type(a))
+                    print(a)
+
             except FileNotFoundError as error:
                 print(error)
-                raise TypeError
+                raise FileNotFoundError
 
 
 if __name__ == '__main__':
     TagCleaner('/home/semantix/Workspace/Python/tag_cleaner/test/fixtures/the_last.txt').clean()
+
