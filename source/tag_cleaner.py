@@ -12,9 +12,9 @@ class TagCleaner:
         with open('pure_text.txt', 'w+') as pure:
             edited = ''
             for line in self.text:
-                edited += (sub('<[^>]*>', '', line)
-                pure.write(sub('<[^>]*>', '', line)
-        return edited
+                #edited += (sub('<[^>]*>', '', line)
+                pure.write(sub('<[^>]*>', '', line))
+            return pure.read()
 
 
 if __name__ == '__main__':
