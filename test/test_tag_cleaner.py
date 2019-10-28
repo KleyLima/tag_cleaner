@@ -6,23 +6,21 @@ from os import getcwd
 
 class TestTagCleaner(unittest.TestCase):
     def setUp(self):
-        print(getcwd())
-        self.teste = TagCleaner('./test/fixtures/the_last.txt')
-        self.formtd = open('./test/fixtures/pure_text.txt')
+        self.formtd = open('./test/fixtures/the_last.txt')
+        self.mock_result = open('./test/fixtures/pure_text.txt')
+        self.test = TagCleaner(self.formtd)
+        self.maxDiff = None
 
     def test_clean(self):
-        teste = self.assertEqual(self.teste.clean(), self.formtd.read())
+        teste = self.assertEqual(self.test.clean(), self.mock_result.read())
 
     def tearDown(self):
+        self.mock_result.close()
         self.formtd.close()
 
 class TestBadPath(unittest.TestCase):
     def setUp(self):
         self.teste = TagCleaner('not_exist.txt')
-
-    def test_bad_file(self):
-        with self.assertRaises(FileNotFoundError):
-            self.teste.clean()
 
 
 if __name__ == '__main__':

@@ -1,25 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from re import sub
-from sys import argv
+from sys import argv, stdin
+
 
 class TagCleaner:
-    def __init__(self, path):
-        self.path = path
+    def __init__(self, text):
+        self.text = text
 
     def clean(self):
         with open('pure_text.txt', 'w+') as pure:
-            try:
-                with open(self.path, 'r') as html:
-                    for line in html:
-                        pure.write(sub('<[^>]*>', '', line))
-                    a = (pure.read())
-
-            except FileNotFoundError as error:
-                print(error)
-                raise FileNotFoundError
+            edited = ''
+            for line in self.text:
+                edited += (sub('<[^>]*>', '', line)
+                pure.write(sub('<[^>]*>', '', line)
+        return edited
 
 
 if __name__ == '__main__':
-    TagCleaner('/home/semantix/Workspace/Python/tag_cleaner/test/fixtures/the_last.txt').clean()
+    TagCleaner(stdin).clean()
 
