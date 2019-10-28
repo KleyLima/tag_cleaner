@@ -4,8 +4,8 @@ from re import sub
 from sys import argv
 
 class TagCleaner:
-    def __init__(self):
-        self.path = argv[1] if argv[1:] else input("Path do Arquivo: ")
+    def __init__(self, path):
+        self.path = path
 
     def clean(self):
         with open('pure_text.txt', 'w') as pure:
@@ -15,8 +15,8 @@ class TagCleaner:
                         pure.write(sub('<[^>]*>', '', line))
             except FileNotFoundError as error:
                 print(error)
-                return FileNotFoundError
+                raise TypeError
 
 
 if __name__ == '__main__':
-    TagCleaner().clean()
+    TagCleaner('/home/semantix/Workspace/Python/tag_cleaner/test/fixtures/the_last.txt').clean()
