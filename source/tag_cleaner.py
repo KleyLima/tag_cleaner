@@ -9,14 +9,14 @@ class TagCleaner:
         self.text = text
 
     def clean(self):
-        with open('pure_text.txt', 'w+') as pure:
-            edited = ''
-            for line in self.text:
-                #edited += (sub('<[^>]*>', '', line)
-                pure.write(sub('<[^>]*>', '', line))
-            return pure.read()
+        edited = ''
+        for line in self.text:
+            edited += sub('<[^>]*>', '', line)
+        edited += '\n'
+        return edited
 
 
 if __name__ == '__main__':
-    TagCleaner(stdin).clean()
+    #print(TagCleaner(open('../test/fixtures/the_last.txt')).clean())
+    print(TagCleaner(open('../test/fixtures/stack.txt')).clean())
 

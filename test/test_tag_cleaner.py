@@ -4,23 +4,33 @@ import unittest
 from source.tag_cleaner import TagCleaner
 from os import getcwd
 
-class TestTagCleaner(unittest.TestCase):
+class TestCleanLast(unittest.TestCase):
     def setUp(self):
         self.formtd = open('./test/fixtures/the_last.txt')
-        self.mock_result = open('./test/fixtures/pure_text.txt')
+        self.mock_result = open('./test/fixtures/pure_last.txt')
         self.test = TagCleaner(self.formtd)
-        self.maxDiff = None
+        print('Testing the_last.txt')
 
     def test_clean(self):
-        teste = self.assertEqual(self.test.clean(), self.mock_result.read())
+        self.assertEqual(self.test.clean(), self.mock_result.read())
 
     def tearDown(self):
         self.mock_result.close()
         self.formtd.close()
 
-class TestBadPath(unittest.TestCase):
+class TestCleanStack(unittest.TestCase):
     def setUp(self):
-        self.teste = TagCleaner('not_exist.txt')
+        self.formtd = open('./test/fixtures/stack.txt')
+        self.mock_result = open('./test/fixtures/pure_stack.txt')
+        self.test = TagCleaner(self.formtd)
+        print('Testing stack.txt')
+
+    def test_clean(self):
+        self.assertEqual(self.test.clean(), self.mock_result.read())
+
+    def tearDown(self):
+        self.mock_result.close()
+        self.formtd.close()
 
 
 if __name__ == '__main__':

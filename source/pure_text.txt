@@ -1,0 +1,30 @@
+
+    
+    
+
+I have a Ruby code file open in vi, there are lines commented out with #:
+
+class Search &lt; ActiveRecord::Migration
+  def self.up
+    # create_table :searches do |t|
+    #   t.integer :user_id
+    #   t.string :name
+    #   t.string :all_of
+    #   t.string :any_of
+    #   t.string :none_of
+    #   t.string :exact_phrase
+    # 
+    #   t.timestamps
+    # end
+  end
+
+  def self.down
+    # drop_table :searches
+  end
+end
+
+
+Say I want to uncomment all the lines in the first def ... end section. What's an efficient way to do that in Vim?
+
+In general, I'm looking for an easy and fluid way to comment and uncomment lines. Here I'm dealing with Ruby code, but it could be JavaScript (//) or Haml (-#).
+    
